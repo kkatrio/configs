@@ -46,6 +46,7 @@ set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 set incsearch
 set ignorecase
 set smartcase
+" assume the /g flag on :s substitutions to replace all matches in a line
 set gdefault
 set hlsearch
 
@@ -66,10 +67,10 @@ cnoremap %s/ %sm/
 nnoremap ; :
 
 " Ctrl+c and Ctrl+j as Esc
-" inoremap <C-j> <Esc>
-" vnoremap <C-j> <Esc>
-" inoremap <C-c> <Esc>
-" vnoremap <C-c> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
+inoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
 
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
@@ -84,6 +85,14 @@ map L $
 noremap <C-j> <C-e>
 noremap <C-k> <C-y>
 
+" Map moving between words
+noremap <C-h> b
+noremap <C-l> w
+
+" Disable K and J
+noremap J <nop>
+noremap K <nop>
+
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
 " ,c will copy entire buffer into clipboard
@@ -91,7 +100,6 @@ noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
 
 " Sane splits
-	" 
 set splitright
 set splitbelow
 
@@ -102,15 +110,12 @@ nnoremap <left> <nop>
 nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 
 " Move by line
 nnoremap j gj
 nnoremap k gk
-
-" insert newline without insert mode
-nmap oo o<Esc>k
 
 " gui options
 set guioptions-=T " Remove toolbar
@@ -121,7 +126,7 @@ set relativenumber " Relative line numbers
 set number " Also show current absolute line
 " set colorcolumn=80 " and give me a colored column
 set showcmd " Show (partial) command in status line.
-" set mouse=a " Enable mouse usage (all modes) in terminals
+set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
 
 
@@ -141,10 +146,3 @@ endif
 set background=dark
 colorscheme base16-atelier-dune
 hi Normal ctermbg=NONE
-
-" let g:base16_shell_path="~/.config/base16-shell/scripts/"
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
