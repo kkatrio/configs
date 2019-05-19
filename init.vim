@@ -66,6 +66,9 @@ cnoremap %s/ %sm/
 " ; as :
 nnoremap ; :
 
+" save
+nnoremap <C-s> :w<CR>
+
 " Ctrl+c and Ctrl+j as Esc
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
@@ -81,17 +84,18 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 map H ^
 map L $
 
-" Map scroll up/down to ctrl+j/k
-noremap <C-j> <C-e>
-noremap <C-k> <C-y>
+" Disable default K and J
+" noremap J <nop>
+" noremap K <nop>
+
+" Map scroll up/down to J, K
+map J <C-e>
+map K <C-y>
 
 " Map moving between words
 noremap <C-h> b
 noremap <C-l> w
 
-" Disable K and J
-noremap J <nop>
-noremap K <nop>
 
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
@@ -108,8 +112,8 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 "inoremap <left> <nop>
 "inoremap <right> <nop>
 
