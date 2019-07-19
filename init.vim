@@ -84,18 +84,13 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 map H ^
 map L $
 
-" Disable default K and J
-" noremap J <nop>
-" noremap K <nop>
-
 " Map scroll up/down to J, K
 map J <C-e>
 map K <C-y>
 
 " Map moving between words
 noremap <C-h> b
-noremap <C-l> w
-
+noremap <C-l> e
 
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
@@ -116,6 +111,10 @@ nnoremap <right> <nop>
 "inoremap <down> <nop>
 "inoremap <left> <nop>
 "inoremap <right> <nop>
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>
 
 " Move by line
 nnoremap j gj
