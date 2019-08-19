@@ -74,6 +74,8 @@ inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
+inoremap <C-k> <Esc>
+vnoremap <C-k> <Esc>
 
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
