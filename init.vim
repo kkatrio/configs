@@ -67,7 +67,7 @@ cnoremap %s/ %sm/
 nnoremap ; :
 
 " save
-nnoremap <C-s> :w<CR>
+nnoremap <leader>w :w<CR>
 
 " Ctrl+c and Ctrl+j as Esc
 inoremap <C-j> <Esc>
@@ -85,10 +85,6 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 " Jump to start and end of line using the home row keys
 map H ^
 map L $
-
-" Map scroll up/down to J, K
-map J <C-e>
-map K <C-y>
 
 " Map moving between words
 noremap <C-h> b
@@ -135,8 +131,10 @@ set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
 
 
-let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_layout = { 'down': '~50%' }
 nnoremap <silent> <leader>f :FZF<cr>
+nnoremap <silent> <leader>f :Buffers<cr>
+nnoremap <silent> <leader>r :Rg<cr>
 
 " Colors
 if !has('gui_running')
