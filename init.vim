@@ -50,6 +50,9 @@ set smartcase
 set gdefault
 set hlsearch
 
+"Press space to highlight current word
+nnoremap <silent><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 " search results centered
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
