@@ -4,16 +4,17 @@ let mapleader = "\<Space>"
 set nocompatible
 filetype off
 
-" Plugins 
+" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 filetype plugin indent on
@@ -30,7 +31,8 @@ set nojoinspaces
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+" set noexpandtab
+set expandtab
 
 " get syntax
 syntax on
@@ -65,6 +67,9 @@ nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
 
+" search selected
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " shortcuts
 " ; as :
 nnoremap ; :
@@ -90,8 +95,8 @@ map H ^
 map L $
 
 " Map moving between words
-noremap <C-h> b
-noremap <C-l> e
+" noremap <C-h> b
+" noremap <C-l> e
 
 " Neat X clipboard integration
 " ,p will paste clipboard into buffer
@@ -136,8 +141,10 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 
 let g:fzf_layout = { 'down': '~50%' }
 nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>f :Buffers<cr>
+nnoremap <silent> <leader>b :Buffers<cr>
 nnoremap <silent> <leader>r :Rg<cr>
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 
 " Colors
 if !has('gui_running')
@@ -145,10 +152,10 @@ if !has('gui_running')
 endif
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
-  set termguicolors
+  " set termguicolors
 endif
 
-" let base16colorspace=256
+let base16colorspace=256
 set background=dark
-colorscheme base16-summerfruit-dark
+" colorscheme base16-summerfruit-dark
 hi Normal ctermbg=NONE
