@@ -83,7 +83,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>t", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- Get signatures (and _only_ signatures) when in argument lists.
@@ -181,6 +181,7 @@ vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 nnoremap ; :
 " save
 nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 " Ctrl+c and Ctrl+j as Esc
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
