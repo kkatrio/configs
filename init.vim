@@ -15,11 +15,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
+
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+
 Plug 'hrsh7th/cmp-vsnip'
+
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
+
 Plug 'ray-x/lsp_signature.nvim'
 
 call plug#end()
@@ -39,17 +43,18 @@ cmp.setup({
   },
   mapping = {
     -- Tab immediately completes. C-n/C-p to select.
-    -- ['<Tab>'] = cmp.mapping.confirm({ select = true })
+    ['<Tab>'] = cmp.mapping.confirm({ select = true })
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'vsnip' },
   }, {
-    { name = 'path' },
+    { name = 'buffer' },
   })
 ,
-  experimental = {
-    ghost_text = true,
-  },
+   experimental = {
+     ghost_text = true,
+   },
 })
 
 -- Enable completing paths in :
@@ -110,9 +115,9 @@ end
          enable = true,
        },
        completion = {
-    postfix = {
-      enable = false,
-    },
+         postfix = {
+           enable = false,
+        },
        },
      },
    },
