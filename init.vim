@@ -144,7 +144,7 @@ set updatetime=300
 filetype plugin indent on
 set autoindent
 set encoding=utf-8
-set scrolloff=20
+"set scrolloff=20
 set noshowmode
 set hidden
 " set nowrap
