@@ -7,24 +7,30 @@ filetype off
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'itchyny/lightline.vim'
+Plug 'chriskempson/base16-vim'
+
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
+
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'chriskempson/base16-vim'
+
+" lsp
 Plug 'neovim/nvim-lspconfig'
-
-Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
-
-Plug 'hrsh7th/cmp-vsnip'
-
-Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
-
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'ray-x/lsp_signature.nvim'
 
+Plug 'rust-lang/rust.vim'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 
@@ -67,7 +73,7 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   --Enable completion triggered by <c-x><c-o>
-  --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -129,6 +135,13 @@ end
   }
 )
 END
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+
+" Enable type inlay hints
+autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 " Completion
 " menuone: popup even when there's only one match
@@ -243,7 +256,7 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 " fzf
 let g:fzf_layout = { 'down': '~50%' }
 nnoremap <silent> <leader>f :FZF<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
+nnoremap <silent> <leader>; :Buffers<cr>
 nnoremap <silent> <leader>s :Rg<cr>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
