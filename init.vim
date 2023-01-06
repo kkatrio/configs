@@ -12,7 +12,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 
-Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -30,7 +29,7 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'rust-lang/rust.vim'
 
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 
