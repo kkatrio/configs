@@ -169,31 +169,39 @@ set tabstop=4
 set expandtab
 " get syntax
 syntax on
+
 " wrapping options
 set formatoptions=tc " wrap text and comments using textwidth
 set formatoptions+=r " continue comments when pressing ENTER in I mode
 set formatoptions+=q " enable formatting of comments with gq
 set formatoptions+=n " detect lists for formatting
 set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
+
 " proper search
 set incsearch
 set ignorecase
 set smartcase
+
 " assume the /g flag on :s substitutions to replace all matches in a line
 set gdefault
 set hlsearch
 "Press space to highlight current word
 " nnoremap <silent><space> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 " search results centered
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
+"nnoremap <silent> * *zz
+"nnoremap <silent> # #zz
+"nnoremap <silent> g* g*zz
+" Do not move, just highlight
+nnoremap <silent> * :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
+
 " some magic
 nnoremap ? ?\v
 nnoremap / /\v
 cnoremap %s/ %sm/
+
 " search selected
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
